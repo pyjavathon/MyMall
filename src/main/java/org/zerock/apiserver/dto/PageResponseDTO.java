@@ -48,6 +48,9 @@ public class PageResponseDTO<E> {
 
         this.nextPage = next ? end +1 : 0;
 
+        this.totalPage = last;
+
+        this.current = pageRequestDTO.getPage();
 
     }
 
