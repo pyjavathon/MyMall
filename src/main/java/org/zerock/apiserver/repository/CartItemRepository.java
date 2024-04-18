@@ -11,7 +11,7 @@ import java.util.List;
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 //Long cino, int qty, String pname, int price, String imageFile
     @Query("select " +
-            " new org.zerock.apiserver.dto.CartItemListDTO(ci.cino, ci.qty, p.pname, p.price, pi.fileName) " +
+            " new org.zerock.apiserver.dto.CartItemListDTO(ci.cino, ci.qty, p.pname, p.price, p.pno, pi.fileName) " +
             "from " +
             " CartItem  ci inner join Cart  mc on ci.cart = mc " +
             " left join Product p on ci.product = p " +
@@ -37,7 +37,7 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
     //특정한 장바구니 번호로 모든 장바구니 아이템들 조회
     @Query("select " +
-            " new org.zerock.apiserver.dto.CartItemListDTO(ci.cino, ci.qty, p.pname, p.price, pi.fileName) " +
+            " new org.zerock.apiserver.dto.CartItemListDTO(ci.cino, ci.qty, p.pname, p.price, p.pno, pi.fileName) " +
             "from "+
             "CartItem ci inner join Cart mc on ci.cart = mc " +
             " left join Product p on ci.product = p "+

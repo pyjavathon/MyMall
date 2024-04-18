@@ -50,9 +50,15 @@ public class ProductController {
     }
     
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/list")
     public PageResponseDTO<ProductDTO> list(PageRequestDTO pageRequestDTO){
+
+        try{
+            Thread.sleep(500);
+        }catch(InterruptedException e){
+            throw new RuntimeException(e);
+        }
         return productService.getList(pageRequestDTO);
     }
 
@@ -81,6 +87,13 @@ public class ProductController {
 
     @GetMapping("/{pno}")
     public ProductDTO read(@PathVariable("pno")Long pno){
+
+        try{
+            Thread.sleep(2000);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+        }
+
         return productService.get(pno);
     }
 

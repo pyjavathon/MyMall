@@ -35,6 +35,7 @@ public class MemberDTO extends User {
         dataMap.put("pw", pw);
         dataMap.put("social", social);
         dataMap.put("roleNames", roleNames);
+        dataMap.put("nickname",nickname);
 
         return dataMap;
 
